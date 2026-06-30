@@ -11,7 +11,23 @@ def len_return(s):
             ss = s[i:j] #Обрезок для проверки в будующем
             if unique_substring(ss):
                 strings.append(ss)
-    return len(max(strings, key=len)) #ВНИМАНИЕ key=len УЖЕ ПРОВЕРЯЕТ ПО ДЛИНЕ
+    return len(max(strings, key=len)) #ВНИМАНИЕ key=len УЖЕ ПОЛУЧАЕТ САМЫЙ ДЛИННЫЙ
 print(len_return("baacab"))
 
+# Оптимизированный вариант, мне помог дип сик
+
+def unique_substring(ss):
+    return len(ss) == len(set(ss))
+
+def len_return(s):
+    max_length = 0
+    for i in range(len(s)):
+        for j in range(i + 1, len(s) + 1):
+            ss = s[i:j]
+            if unique_substring(ss):
+                if len(ss) > max_length:
+                    max_length = len(ss)
+    return max_length
+
+print(len_return("baacab"))  # 3 ("bac" или "acb")
     

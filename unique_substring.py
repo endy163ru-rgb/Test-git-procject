@@ -30,4 +30,5 @@ def len_return(s):
     return max_length
 
 print(len_return("baacab"))  # 3 ("bac" или "acb")
+
     
